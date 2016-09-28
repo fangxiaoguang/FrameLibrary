@@ -17,7 +17,7 @@ public abstract class BaseSprite {
 
     private float x, y;
     private int z;
-    private BaseFlyweight flyweight;
+    protected BaseFlyweight flyweight;
     private TouchMessage touchMessage;
 
     private BaseLogicScene parentScene;

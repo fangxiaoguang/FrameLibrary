@@ -9,6 +9,9 @@ import com.game.frame.scene.SCENE_ID;
  */
 
 public abstract class SubScene extends BaseLogicScene {
+    public SubScene(SCENE_ID pSceneId) {
+        super(pSceneId, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
     public SubScene(SCENE_ID pSceneId, float pOffsetX, float pOffsetY, float pWidth, float pHeight) {
         super(pSceneId, pOffsetX, pOffsetY, pWidth, pHeight);
     }

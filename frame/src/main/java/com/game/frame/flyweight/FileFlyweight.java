@@ -13,16 +13,18 @@ import org.andengine.ui.activity.BaseGameActivity;
 
 import java.io.File;
 
+import static com.game.frame.global.FrameGlobal.getGameActivity;
+
 /**
  * Created by fangxg on 2015/7/2.
  */
 public class FileFlyweight extends BaseFlyweight {
     protected String fileName;
-    private BaseGameActivity gameActivity;
-    public FileFlyweight(float pOffsetX, float pOffsetY, String pFileName, BaseGameActivity pGameActivity) {
+
+    public FileFlyweight(float pOffsetX, float pOffsetY, String pFileName) {
         super(pOffsetX, pOffsetY);
         fileName = pFileName;
-        gameActivity = pGameActivity;
+
     }
 
     @Override
@@ -32,7 +34,7 @@ public class FileFlyweight extends BaseFlyweight {
         if (resFile.exists() == true) {
 
             FileBitmapTextureAtlasSource fileBitmapTextureAtlasSource = FileBitmapTextureAtlasSource.create(resFile);
-            BitmapTextureAtlas saveTex = new BitmapTextureAtlas(gameActivity.getTextureManager(), 256, 128);
+            BitmapTextureAtlas saveTex = new BitmapTextureAtlas(getGameActivity().getTextureManager(), 256, 128);
             TiledTextureRegion saveTexReg = BitmapTextureAtlasTextureRegionFactory.createTiledFromSource(saveTex, fileBitmapTextureAtlasSource, 0, 0, 1, 1);
             saveTex.load();
 

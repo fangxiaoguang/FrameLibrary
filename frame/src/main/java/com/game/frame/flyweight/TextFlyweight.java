@@ -11,6 +11,8 @@ import org.andengine.ui.activity.BaseGameActivity;
 import org.andengine.util.HorizontalAlign;
 import org.andengine.util.color.Color;
 
+import static com.game.frame.global.FrameGlobal.getGameActivity;
+
 /**
  * Created by fangxg on 2015/6/19.
  */
@@ -21,32 +23,30 @@ public class TextFlyweight extends BaseFlyweight {
     public Font font;
     public Color color;
 
-    private BaseGameActivity gameActivity;
-
-    public TextFlyweight(boolean pLeftAlign, String pText, Font pFont, BaseGameActivity pGameActivity) {
-        this(0.0f, 0.0f, pLeftAlign, pText, pFont, Color.WHITE, pGameActivity);
+    public TextFlyweight(boolean pLeftAlign, String pText, Font pFont) {
+        this(0.0f, 0.0f, pLeftAlign, pText, pFont, Color.WHITE);
     }
 
-    public TextFlyweight(boolean pLeftAlign, String pText, Font pFont, Color pColor, BaseGameActivity pGameActivity) {
-        this(0.0f, 0.0f, pLeftAlign, pText, pFont, pColor, pGameActivity);
+    public TextFlyweight(boolean pLeftAlign, String pText, Font pFont, Color pColor) {
+        this(0.0f, 0.0f, pLeftAlign, pText, pFont, pColor);
     }
-    public TextFlyweight(float pOffsetX, float pOffsetY, boolean pLeftAlign, String pText, Font pFont, BaseGameActivity pGameActivity){
-        this(pOffsetX, pOffsetY, pLeftAlign, pText, pFont, Color.WHITE, pGameActivity);
+    public TextFlyweight(float pOffsetX, float pOffsetY, boolean pLeftAlign, String pText, Font pFont){
+        this(pOffsetX, pOffsetY, pLeftAlign, pText, pFont, Color.WHITE);
     }
-    public TextFlyweight(float pOffsetX, float pOffsetY, boolean pLeftAlign, String pText, Font pFont, Color pColor, BaseGameActivity pGameActivity) {
+    public TextFlyweight(float pOffsetX, float pOffsetY, boolean pLeftAlign, String pText, Font pFont, Color pColor) {
         super(pOffsetX, pOffsetY);
         this.leftAlign = pLeftAlign;
         this.text = pText;
         font = pFont;
         color = pColor;
-        gameActivity = pGameActivity;
+
     }
 
     @Override
     public RectangularShape getShapeSelf(TouchMessage pTouchMessage) {
 
         Text text = new Text(0, 0, font, this.text, new TextOptions(HorizontalAlign.LEFT),
-                gameActivity.getVertexBufferObjectManager());
+                getGameActivity().getVertexBufferObjectManager());
         float x = 0.0f;
         float y = offsetY;
         if (leftAlign == true) {
