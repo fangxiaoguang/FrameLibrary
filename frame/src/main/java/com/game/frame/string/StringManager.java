@@ -21,7 +21,6 @@ public class StringManager {
     public static StringManager getInstance() {
         if (_nistance == null) {
             _nistance = new StringManager();
-            _nistance.init();
         }
         return _nistance;
     }
@@ -29,9 +28,9 @@ public class StringManager {
     private StringManager() {
     }
 
-    public void init() {
+    public void init( String dbFullPath) {
 
-        SQLiteDatabase dbData = DatabaseManager.getSqLiteDatabase("data.db");//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "data.db", null, SQLiteDatabase.OPEN_READWRITE);
+        SQLiteDatabase dbData = DatabaseManager.getSqLiteDatabase(dbFullPath);//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "data.db", null, SQLiteDatabase.OPEN_READWRITE);
         strings = new HashMap<>();
 
         Cursor cursor = dbData.query("STRING", new String[] { "id", "value" }, null, null, null, null, null);

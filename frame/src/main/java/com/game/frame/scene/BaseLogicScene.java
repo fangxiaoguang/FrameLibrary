@@ -24,6 +24,7 @@ import java.util.Set;
  */
 
 public abstract  class BaseLogicScene implements IMessageHandler {
+    protected SCENE_ID preSceneID;
     protected SCENE_ID sceneId;
     protected float offsetX;
     protected float offsetY;
@@ -53,6 +54,14 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         width = pWidth;
         height = pHeight;
         spriteList = new ArrayList<BaseSprite>();
+    }
+
+    public void setPreSceneID(SCENE_ID preSceneID) {
+        this.preSceneID = preSceneID;
+    }
+
+    public SCENE_ID getPreSceneID() {
+        return preSceneID;
     }
 
     public float getWidth() {

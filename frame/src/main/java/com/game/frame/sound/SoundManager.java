@@ -58,16 +58,21 @@ public class SoundManager {
         this.settingSoundVolume = settingSoundVolume;
     }
 
-    public void init(BaseGameActivity pGameActivity, Handler pHandler, String dbFullPath, SOUND_LOCATION pSoundLocation, String pSdcartdPahtSound) {
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public void init(BaseGameActivity pGameActivity, String dbFullPath, SOUND_LOCATION pSoundLocation, String pSdcartdPahtSound) {
         settingOpenSound = true;
         settingSoundVolume = 1.0f;
 
         gameActivity = pGameActivity;
-        handler = pHandler;
+//        handler = pHandler;
         soundLocation = pSoundLocation;
         sdcartdPahtSound = pSdcartdPahtSound;
 
-        SQLiteDatabase dbData = DatabaseManager.getSqLiteDatabase("data.db");//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "data.db", null, SQLiteDatabase.OPEN_READWRITE);
+        SQLiteDatabase dbData = DatabaseManager.getSqLiteDatabase(dbFullPath);//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "data.db", null, SQLiteDatabase.OPEN_READWRITE);
 
         sounds = new HashMap<>();
 

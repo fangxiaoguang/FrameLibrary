@@ -7,16 +7,16 @@ import com.game.frame.scene.dialg.DialogScene;
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
+
+import static com.game.frame.global.FrameGlobal.getGameActivity;
 //import com.game.gaika.profile.Profile;
 
 
 public class SceneManager {
 
     private static BaseLogicScene topBaseLogicScene;
-    private static BaseGameActivity gameActivity;
 
-    public static void init(BaseGameActivity pGameActivity) {
-        gameActivity = pGameActivity;
+    public static void init() {
 
     }
 
@@ -26,7 +26,7 @@ public class SceneManager {
 
     public static void render(final BaseLogicScene pBaseLogicScene) {
 
-        gameActivity.runOnUpdateThread(new Runnable() {
+        getGameActivity().runOnUpdateThread(new Runnable() {
             @Override
             public void run() {
                 BaseFlyweight.clearTagedEntity();
@@ -34,23 +34,23 @@ public class SceneManager {
 
                 Scene tScene = pBaseLogicScene.getScene();
 
-                gameActivity.getEngine().getScene().clearChildScene();
-                gameActivity.getEngine().getScene().setChildSceneModal(tScene);
+                getGameActivity().getEngine().getScene().clearChildScene();
+                getGameActivity().getEngine().getScene().setChildSceneModal(tScene);
 
 
 //                HUD mHud = null;
                 if (pBaseLogicScene.getHUDScene() != null) {
                     HUD mHud = (HUD) (pBaseLogicScene.getHUDScene().getScene());
-                    gameActivity.getEngine().getCamera().setHUD(mHud);
+                    getGameActivity().getEngine().getCamera().setHUD(mHud);
                 } else {
-                    gameActivity.getEngine().getCamera().setHUD(null);
+                    getGameActivity().getEngine().getCamera().setHUD(null);
                 }
 
                 DialogScene dialogScene = pBaseLogicScene.getDialogSecne();
                 if (dialogScene != null) {
 
-                    if (gameActivity.getEngine().getCamera().getHUD() != null) {
-                        gameActivity.getEngine().getCamera().getHUD().clearTouchAreas();
+                    if (getGameActivity().getEngine().getCamera().getHUD() != null) {
+                        getGameActivity().getEngine().getCamera().getHUD().clearTouchAreas();
                     }
 
                     Scene lostScene = tScene;
@@ -71,7 +71,7 @@ public class SceneManager {
                 }
 
                 CameraRange cr = pBaseLogicScene.getCamera().getCameraRenge();
-                gameActivity.getEngine().getCamera().set(cr.xMin, cr.yMin, cr.xMax, cr.yMax);
+                getGameActivity().getEngine().getCamera().set(cr.xMin, cr.yMin, cr.xMax, cr.yMax);
             }
         });
     }

@@ -10,11 +10,6 @@ import com.game.frame.scene.camera.BaseLogicCamera;
 
 public class FillDisplayCamera extends BaseLogicCamera {
 
-    float cameraWidth;
-    float cameraHeight;
-
-    float centeX;
-    float centeY;
 
 
     //private CameraRange cameraRange;
