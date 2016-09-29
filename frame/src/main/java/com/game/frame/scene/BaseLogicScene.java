@@ -98,6 +98,10 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         childScenes.add(pChildScene);
     }
 
+    public List<BaseLogicScene> getChildScenes() {
+        return childScenes;
+    }
+
     public void setHUDScene(BaseLogicScene pHUDScene) {
         hudScene = pHUDScene;
     }

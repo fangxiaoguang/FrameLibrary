@@ -12,6 +12,7 @@ import com.game.frame.global.FrameGlobal;
 import com.game.frame.scene.BaseLogicScene;
 import com.game.frame.scene.SCENE_ID;
 import com.game.frame.scene.SceneManager;
+import com.game.frame.scene.hud.HUDScene;
 import com.game.frame.sound.SoundManager;
 import com.game.frame.sprite.BaseSprite;
 import com.game.frame.string.StringManager;
@@ -73,8 +74,8 @@ public class MainActivity extends SimpleBaseGameActivity implements Testable {
     protected void onCreateResources() {
         Log.d(TAG, "-------onCreateResources------");
         TexRegionManager.getInstance().init(getGameActivity(), GameSetup.sdcartdPahtDB + "data.db", TexRegionManager.TEXTURE_LOCATION.ASSETS, null);
-        SoundManager.getInstance().init(getGameActivity(),   GameSetup.sdcartdPahtDB + "data.db", SoundManager.SOUND_LOCATION.ASSETS, null);
-        StringManager.getInstance().init( GameSetup.sdcartdPahtDB + "data.db");
+        SoundManager.getInstance().init(getGameActivity(), GameSetup.sdcartdPahtDB + "data.db", SoundManager.SOUND_LOCATION.ASSETS, null);
+        StringManager.getInstance().init(GameSetup.sdcartdPahtDB + "data.db");
         return;
     }
 
@@ -86,8 +87,8 @@ public class MainActivity extends SimpleBaseGameActivity implements Testable {
         SaveManager.loadConfig();
 
 //        if (DebugManager.getAppRunModel() == ID.RUN_MODELE.RELESE) {
-            BaseLogicScene startScene = new Logo1Scene();
-            SceneManager.render(startScene);
+        BaseLogicScene startScene = new Logo1Scene();
+        SceneManager.render(startScene);
 //        } else if (DebugManager.getAppRunModel() == ID.RUN_MODELE.DEBUG) {
 //            BeginMenuSceen beginMenuSceen = new BeginMenuSceen();
 //            SceneManager.render(beginMenuSceen);
@@ -251,14 +252,55 @@ public class MainActivity extends SimpleBaseGameActivity implements Testable {
         BaseLogicScene scene = getCurrentScene();
 
         List<BaseSprite> sl = scene.getSpriteList();
-        for(int i = 0; i < sl.size(); i ++){
+        for (int i = 0; i < sl.size(); i++) {
             BaseSprite s = sl.get(i);
 
-            if(id.equals(s.getId())){
+            if (id.equals(s.getId())) {
                 return new GameElement(scene, s, this);
             }
 
         }
+
+        List<BaseLogicScene> cl = scene.getChildScenes();
+
+        if (cl != null) {
+
+            for (int j = 0; j < cl.size(); j++) {
+                BaseLogicScene cScene = cl.get(j);
+                List<BaseSprite> sl2 = cScene.getSpriteList();
+                for (int i = 0; i < sl2.size(); i++) {
+                    BaseSprite s = sl2.get(i);
+
+                    if (id.equals(s.getId())) {
+                        return new GameElement(scene, s, this);
+                    }
+
+                }
+            }
+        }
+
+        BaseLogicScene hudScene = scene.getHUDScene();
+        List<BaseSprite> sl3 = hudScene.getSpriteList();
+        for (int i = 0; i < sl3.size(); i++) {
+            BaseSprite s = sl3.get(i);
+
+            if (id.equals(s.getId())) {
+                return new GameElement(scene, s, this);
+            }
+
+        }
+
+        BaseLogicScene dialogScene = scene.getDialogSecne();
+        List<BaseSprite> sl4 = dialogScene.getSpriteList();
+        for (int i = 0; i < sl4.size(); i++) {
+            BaseSprite s = sl4.get(i);
+
+            if (id.equals(s.getId())) {
+                return new GameElement(scene, s, this);
+            }
+
+        }
+
 
         return null;
     }

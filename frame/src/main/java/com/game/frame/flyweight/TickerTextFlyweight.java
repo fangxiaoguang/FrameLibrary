@@ -10,24 +10,26 @@ import org.andengine.opengl.font.Font;
 import org.andengine.ui.activity.BaseGameActivity;
 import org.andengine.util.HorizontalAlign;
 
+import static com.game.frame.global.FrameGlobal.getGameActivity;
+
 /**
  * Created by fangxg on 2015/6/20.
  */
 public class TickerTextFlyweight  extends BaseFlyweight {
 
-    public String text = "";
-    public Font font;
+    private String text = "";
+    private Font font;
     private BaseGameActivity gameActivity;
 
-    public TickerTextFlyweight(String pText, Font pFont,  BaseGameActivity pGameActivity) {
-        this(0.0f, 0.0f,  pText, pFont, pGameActivity);
+    public TickerTextFlyweight(String pText, Font pFont) {
+        this(0.0f, 0.0f,  pText, pFont);
     }
 
-    public TickerTextFlyweight(float pOffsetX, float pOffsetY, String pText, Font pFont,  BaseGameActivity pGameActivity) {
+    public TickerTextFlyweight(float pOffsetX, float pOffsetY, String pText, Font pFont) {
         super(pOffsetX, pOffsetY);
         this.text = pText;
         font = pFont;
-        gameActivity = pGameActivity;
+        gameActivity = getGameActivity();
     }
 
     @Override
