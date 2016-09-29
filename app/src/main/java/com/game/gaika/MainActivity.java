@@ -10,15 +10,20 @@ import com.game.frame.fsm.MSG_ID;
 import com.game.frame.fsm.TouchMessage;
 import com.game.frame.global.FrameGlobal;
 import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
 import com.game.frame.scene.SceneManager;
 import com.game.frame.sound.SoundManager;
+import com.game.frame.sprite.BaseSprite;
 import com.game.frame.string.StringManager;
 import com.game.frame.texture.TexRegionManager;
 import com.game.frame.util.GLog;
 import com.game.gaika.data.GameSetup;
+import com.game.gaika.data.ID;
 import com.game.gaika.data.SaveManager;
 import com.game.gaika.scene.Logo1Scene;
 import com.game.gaika.tool.Tools;
+import com.game.test.GameElement;
+import com.game.test.Testable;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
@@ -29,11 +34,12 @@ import org.andengine.ui.activity.BaseGameActivity;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import java.io.File;
+import java.util.List;
 
 import static com.game.frame.global.FrameGlobal.getGameActivity;
 
 
-public class MainActivity extends SimpleBaseGameActivity {
+public class MainActivity extends SimpleBaseGameActivity implements Testable {
     final String TAG = "Gaika";
     //public static BaseGameActivity mGameActiviy;
 
@@ -227,6 +233,34 @@ public class MainActivity extends SimpleBaseGameActivity {
         Log.d(TAG, screen);
 
         Log.d(TAG, "++++++++++++++------------" + screen);
+    }
+
+    @Override
+    public SCENE_ID getCurrentSceneId() {
+        return SceneManager.getTopBaseLogicScene().getSceneId();
+
+    }
+
+    @Override
+    public BaseLogicScene getCurrentScene() {
+        return SceneManager.getTopBaseLogicScene();
+    }
+
+    @Override
+    public GameElement getElement(String id) {
+        BaseLogicScene scene = getCurrentScene();
+
+        List<BaseSprite> sl = scene.getSpriteList();
+        for(int i = 0; i < sl.size(); i ++){
+            BaseSprite s = sl.get(i);
+
+            if(id.equals(s.getId())){
+                return new GameElement(scene, s, this);
+            }
+
+        }
+
+        return null;
     }
 }
 
