@@ -6,7 +6,6 @@ import com.game.frame.scene.dialg.DialogScene;
 
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.Scene;
-import org.andengine.ui.activity.BaseGameActivity;
 
 import static com.game.frame.global.FrameGlobal.getGameActivity;
 //import com.game.gaika.profile.Profile;
@@ -70,7 +69,7 @@ public class SceneManager {
                     lostScene.setChildScene(dialog);
                 }
 
-                CameraRange cr = pBaseLogicScene.getCamera().getCameraRenge();
+                CameraRange cr = pBaseLogicScene.getLogicCamera().getCameraRenge();
                 getGameActivity().getEngine().getCamera().set(cr.xMin, cr.yMin, cr.xMax, cr.yMax);
             }
         });

@@ -78,6 +78,10 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         pSprite.setParentScene(this);
     }
 
+    public List<BaseSprite> getSpriteList() {
+        return spriteList;
+    }
+
     public void setParentScene(BaseLogicScene parentScene) {
         this.parentScene = parentScene;
     }
@@ -130,6 +134,11 @@ public abstract  class BaseLogicScene implements IMessageHandler {
 
     }
 
+    public Scene createBackupScene() {
+
+        return new Scene();
+    }
+
     public abstract boolean isBacegroundEnabled();
 
     private Scene getBackupScene() {
@@ -138,7 +147,7 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         for (BaseSprite sprite : spriteList) {
             setZ.add(sprite.getZ());
         }
-        Scene bkScene = new Scene();
+        Scene bkScene = createBackupScene();
         for (Integer z : setZ) {
             Entity entity = new Entity();
             entity.setZIndex(z);
@@ -227,7 +236,7 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         this.camera = camera;
     }
 
-    public BaseLogicCamera getCamera() {
+    public BaseLogicCamera getLogicCamera() {
         return camera;
     }
 }

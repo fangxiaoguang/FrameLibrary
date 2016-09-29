@@ -2,12 +2,16 @@ package com.game.frame.scene.camera;
 
 import android.util.Pair;
 
+import com.game.frame.scene.BaseLogicScene;
+
 
 /**
  * Created by devuser1 on 2016/9/27.
  */
 
 public abstract class BaseLogicCamera {
+
+    protected BaseLogicScene parentScene;
 
     protected float cameraWidth;
     protected float cameraHeight;

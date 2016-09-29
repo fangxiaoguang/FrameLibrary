@@ -1,4 +1,4 @@
-package com.game.frame.scene.hud;
+package com.game.frame.scene.sub;
 
 
 import com.game.frame.scene.BaseLogicScene;
