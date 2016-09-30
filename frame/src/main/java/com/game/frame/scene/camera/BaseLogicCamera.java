@@ -26,6 +26,13 @@ public abstract class BaseLogicCamera {
         return new CameraRange(xMin, yMin, xMax, yMax);
     }
 
+    public float getCameraWidth() {
+        return cameraWidth;
+    }
+
+    public float getCameraHeight() {
+        return cameraHeight;
+    }
 
     public Pair<Float, Float> getCente() {
         return new Pair<>(centeX, centeY);
@@ -36,4 +43,5 @@ public abstract class BaseLogicCamera {
         centeX = cente.first;
         centeY = cente.second;
     }
+
 }
