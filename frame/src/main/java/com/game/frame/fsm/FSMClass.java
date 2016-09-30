@@ -11,7 +11,7 @@ public class FSMClass {
     private Enum   currentStateID;
     private Map<Enum, FSMState> states = new HashMap<Enum, FSMState>();
 
-    public FSMClass(Enum pCurrentStateID) {
+    public FSMClass(Enum pCurrentStateID)  {
         currentStateID = pCurrentStateID;
 
     }
