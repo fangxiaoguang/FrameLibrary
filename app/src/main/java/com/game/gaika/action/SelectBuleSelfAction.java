@@ -1,9 +1,9 @@
 package com.game.gaika.action;
 
-import com.game.gaika.FSM.TouchMessage;
-import com.game.gaika.data.ID;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.SceneManager;
 import com.game.gaika.scene.BattlefieldScene;
-import com.game.gaika.scene.SceneManager;
 import com.game.gaika.scene.dialg.Dialg6YesNoDialogScene;
 
 /**
@@ -17,8 +17,8 @@ public class SelectBuleSelfAction implements BaseAction{
         BattlefieldScene battlefieldScene = new BattlefieldScene(false);
 
         Dialg6YesNoDialogScene yesNoDialog = new Dialg6YesNoDialogScene("在当前的位置结束行动。",
-                new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__SELECT_SELF_DLG_YES, null, battlefieldScene),
-                new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__SELECT_SELF_DLG_NO, null, battlefieldScene),battlefieldScene );
+                new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__SELECT_SELF_DLG_YES, null, battlefieldScene),
+                new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__SELECT_SELF_DLG_NO, null, battlefieldScene),battlefieldScene );
 
         battlefieldScene.setDialogSecne(yesNoDialog);
         SceneManager.render(battlefieldScene);

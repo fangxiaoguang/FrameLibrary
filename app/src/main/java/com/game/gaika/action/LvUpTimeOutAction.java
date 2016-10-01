@@ -1,13 +1,15 @@
 package com.game.gaika.action;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.SceneManager;
+import com.game.frame.sprite.DelaySprite;
 import com.game.gaika.data.City;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.ID;
 import com.game.gaika.data.weapon.BaseWeapon;
 import com.game.gaika.scene.BattlefieldScene;
-import com.game.gaika.scene.SceneManager;
 import com.game.gaika.scene.dialg.CaptureDialogScene;
 
 /**
@@ -42,7 +44,7 @@ public class LvUpTimeOutAction implements BaseAction {
                 city.capture = newCapture;
             }
         }else{
-            DelaySprite delaySprite = new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__CAPTURING_TIME_OUT, null, battlefieldScene, weaponID));
+            DelaySprite delaySprite = new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__CAPTURING_TIME_OUT, null, battlefieldScene, weaponID));
             battlefieldScene.addSprite(delaySprite);
         }
 

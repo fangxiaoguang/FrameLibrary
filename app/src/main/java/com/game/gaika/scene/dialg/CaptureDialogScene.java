@@ -1,13 +1,20 @@
 package com.game.gaika.scene.dialg;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.dialg.DialogScene;
+import com.game.frame.sprite.DelaySprite;
+import com.game.frame.sprite.NormalSprite;
+import com.game.frame.sprite.NumberSprite;
+import com.game.frame.sprite.TextSprite;
+import com.game.frame.texture.TexRegionManager;
 import com.game.gaika.data.City;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.ID;
 import com.game.gaika.data.weapon.BaseWeapon;
-import com.game.gaika.scene.BaseLogicScene;
-import com.game.gaika.texture.TexRegionManager;
 
 import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.DelayModifier;
@@ -19,7 +26,7 @@ import org.andengine.entity.modifier.SequenceEntityModifier;
  */
 public class CaptureDialogScene extends DialogScene {
     public CaptureDialogScene(int pWeaponID, BaseLogicScene pParentScene) {
-        super(ID.SCENE_ID.CAPTURE_DIALOG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
+        super(SCENE_ID.CAPTURE_DIALOG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
         GameDataManager gdm = GameDataManager.getInstance();
         BaseWeapon weapon = gdm.weapons.get(pWeaponID);
 
@@ -83,7 +90,7 @@ public class CaptureDialogScene extends DialogScene {
                 delayMS += GameSetup.DELAY_CAPTURED_MS ;
             }
 
-            DelaySprite delaySprite = new DelaySprite(((float)delayMS / 1000.0f), new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__CAPTURING_TIME_OUT, null, pParentScene, pWeaponID));
+            DelaySprite delaySprite = new DelaySprite(((float)delayMS / 1000.0f), new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__CAPTURING_TIME_OUT, null, pParentScene, pWeaponID));
             addSprite(delaySprite);
 
     }

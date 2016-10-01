@@ -64,6 +64,11 @@ public abstract  class BaseLogicScene implements IMessageHandler {
         return preSceneID;
     }
 
+    public void setOffset(Pair<Float, Float> pOffset){
+        offsetX = pOffset.first;
+        offsetY = pOffset.second;
+    }
+
     public float getWidth() {
         return width;
     }
@@ -84,6 +89,10 @@ public abstract  class BaseLogicScene implements IMessageHandler {
 
     public void setParentScene(BaseLogicScene parentScene) {
         this.parentScene = parentScene;
+    }
+
+    public BaseLogicScene getParentScene() {
+        return parentScene;
     }
 
     public void addChildScene(BaseLogicScene pChildScene) {

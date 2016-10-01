@@ -1,7 +1,8 @@
 package com.game.gaika.action;
 
-import com.game.gaika.data.ID;
-import com.game.gaika.scene.SceneManager;
+
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.SceneManager;
 import com.game.gaika.scene.TeamListScene;
 
 /**
@@ -11,7 +12,7 @@ public class TeamListAction implements BaseAction {
     @Override
     public void doAction() {
 
-        ID.SCENE_ID secenID = SceneManager.getTopBaseLogicScene().getSceneId();
+        SCENE_ID secenID = SceneManager.getTopBaseLogicScene().getSceneId();
         TeamListScene teamListScene = new TeamListScene(true, secenID);
         SceneManager.render(teamListScene);
     }

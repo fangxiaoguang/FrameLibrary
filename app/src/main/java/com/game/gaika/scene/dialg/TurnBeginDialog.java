@@ -1,14 +1,21 @@
 package com.game.gaika.scene.dialg;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.dialg.DialogScene;
+import com.game.frame.sprite.DelaySprite;
+import com.game.frame.sprite.NormalSprite;
+import com.game.frame.sprite.NumberSprite;
+import com.game.frame.sprite.TextSprite;
+import com.game.frame.texture.TexRegionManager;
 import com.game.gaika.data.City;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.GameTimer;
 import com.game.gaika.data.ID;
-import com.game.gaika.scene.BaseLogicScene;
 import com.game.gaika.scene.BattlefieldScene;
-import com.game.gaika.texture.TexRegionManager;
 
 /**
  * Created by fangxg on 2015/7/29.
@@ -17,7 +24,7 @@ public class TurnBeginDialog extends DialogScene {
 
 
     public TurnBeginDialog(BaseLogicScene pParentScene, ID.TEAM_COLOR pTeamColor) {
-        super(ID.SCENE_ID.TURN_BEGIN_DIALG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
+        super(SCENE_ID.TURN_BEGIN_DIALG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
         GameDataManager gdm = GameDataManager.getInstance();
 
         BattlefieldScene battlefieldScene = new BattlefieldScene(false);
@@ -58,10 +65,10 @@ public class TurnBeginDialog extends DialogScene {
         addSprite(supplySprite);
 
         if(pTeamColor == ID.TEAM_COLOR.BLUE){
-            addSprite(new DelaySprite(GameSetup.DELAY_TURN_BEGIN_DLG_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__BLUE_TURN_BEGIN_TIME_OUT, null, battlefieldScene)));
+            addSprite(new DelaySprite(GameSetup.DELAY_TURN_BEGIN_DLG_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__BLUE_TURN_BEGIN_TIME_OUT, null, battlefieldScene)));
         }else {
 
-            addSprite(new DelaySprite(GameSetup.DELAY_TURN_BEGIN_DLG_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__AI_TURN_BEGIN_TIME_OUT, null, battlefieldScene)));
+            addSprite(new DelaySprite(GameSetup.DELAY_TURN_BEGIN_DLG_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__AI_TURN_BEGIN_TIME_OUT, null, battlefieldScene)));
         }
 
     }

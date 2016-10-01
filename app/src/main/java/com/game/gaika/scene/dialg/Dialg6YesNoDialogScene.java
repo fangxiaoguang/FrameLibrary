@@ -1,23 +1,26 @@
 package com.game.gaika.scene.dialg;
 
-import com.game.gaika.FSM.IMessageHandler;
-import com.game.gaika.FSM.TouchMessage;
-import com.game.gaika.scene.BaseLogicScene;
-import com.game.gaika.texture.TexRegionManager;
+import com.game.frame.fsm.IMessageHandler;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.dialg.DialogScene;
+import com.game.frame.sprite.NormalSprite;
+import com.game.frame.sprite.TextSprite;
+import com.game.frame.texture.TexRegionManager;
 
-import static com.game.gaika.data.ID.SCENE_ID.*;
-import com.game.gaika.data.ID.MSG_ID;
 /**
  * Created by fangxg on 2015/6/30.
  */
 public class Dialg6YesNoDialogScene extends DialogScene {
 
-    public Dialg6YesNoDialogScene(String pText, MSG_ID pYesEMsgID, MSG_ID pNoEMsgID, IMessageHandler pHandler,BaseLogicScene pParentScene) {
+    public Dialg6YesNoDialogScene(String pText, MSG_ID pYesEMsgID, MSG_ID pNoEMsgID, IMessageHandler pHandler, BaseLogicScene pParentScene) {
         this(pText, new TouchMessage(pYesEMsgID, null, pHandler), new TouchMessage(pNoEMsgID, null, pHandler),pParentScene);
 
     }
     public Dialg6YesNoDialogScene(String pText, TouchMessage pYesMsg, TouchMessage pNoMsg, BaseLogicScene pParentScene) {
-        super(YES_NO_DIALOG, 0.0f, 0.0f, 406, 173,  pParentScene, EPointModel.POINT_MODEL_CENTER);
+        super( SCENE_ID.YES_NO_DIALOG, 0.0f, 0.0f, 406, 173,  pParentScene, EPointModel.POINT_MODEL_CENTER);
 
 
 

@@ -1,13 +1,15 @@
 package com.game.gaika.action;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.SceneManager;
+import com.game.frame.sprite.DelaySprite;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.ID;
 import com.game.gaika.data.WeaponSelectFilter;
 import com.game.gaika.data.weapon.BaseWeapon;
 import com.game.gaika.scene.BattlefieldScene;
-import com.game.gaika.scene.SceneManager;
 
 import java.util.List;
 
@@ -30,11 +32,8 @@ public class TurnFinishDilogYesAction implements BaseAction{
             weapon.doTurnFinish();
         }
 
-
-
-
         BattlefieldScene battlefieldScene = new BattlefieldScene(false);
-        battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_NEXT, null, battlefieldScene)));
+        battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_NEXT, null, battlefieldScene)));
         SceneManager.render(battlefieldScene);
     }
 }
