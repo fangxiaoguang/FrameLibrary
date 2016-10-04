@@ -1,7 +1,7 @@
 package com.game.gaika.action;
 
-import com.game.gaika.data.ID;
-import com.game.gaika.scene.SceneManager;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.SceneManager;
 import com.game.gaika.scene.SettingScene;
 
 /**
@@ -10,7 +10,7 @@ import com.game.gaika.scene.SettingScene;
 public class SettingAction implements BaseAction {
     @Override
     public void doAction() {
-        ID.SCENE_ID secenID = SceneManager.getTopBaseLogicScene().getSceneId();
+        SCENE_ID secenID = SceneManager.getTopBaseLogicScene().getSceneId();
         SettingScene settingScene = new SettingScene( true, secenID);
         SceneManager.render(settingScene );
     }

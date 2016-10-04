@@ -1,11 +1,13 @@
 package com.game.gaika.sprite;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.flyweight.AnimeFlyweight;
+import com.game.frame.flyweight.NormalFlyweight;
+import com.game.frame.flyweight.TextFlyweight;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.sprite.BaseSprite;
 import com.game.gaika.data.GameChapter;
-import com.game.gaika.flyweight.AnimeFlyweight;
-import com.game.gaika.flyweight.NormalFlyweight;
-import com.game.gaika.flyweight.TextFlyweight;
-import com.game.gaika.texture.TexRegionManager;
+
+import static com.game.frame.texture.TexRegionManager.getFont16;
 
 /**
  * Created by fangxg on 2015/7/1.
@@ -45,7 +47,7 @@ public class SelectChapterSprite  extends BaseSprite {
                 NormalFlyweight labelSprite = new NormalFlyweight(-35 + 7 + 10, -30 + 42, "oper_btb", 2);
                 bkFlyweight.addChildFlyweight(labelSprite);
 
-                TextFlyweight textSprite = new TextFlyweight(-35 + 7 + 10 + 8, -30 + 42 + 3, true, pChapter.cName, TexRegionManager.getInstance().getFont16());
+                TextFlyweight textSprite = new TextFlyweight(-35 + 7 + 10 + 8, -30 + 42 + 3, true, pChapter.cName, getFont16());
                 bkFlyweight.addChildFlyweight(textSprite);
            // }
         }

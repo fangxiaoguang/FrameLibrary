@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.game.frame.sound.SoundManager.playSound;
+import static com.game.frame.texture.TexRegionManager.getFont32;
 import static com.game.gaika.scene.TutorialScene.InitID.*;
 
 /**
@@ -69,7 +70,7 @@ public class TutorialScene extends SimpleScene{
         addSprite(sprite2);
 
         TickerTextSprite tickerTextSprite = new TickerTextSprite((this.width - 721) / 2 + 35, (this.height - 136) + 15,
-                StringManager.getInstance().getString(imageList.get(0).msgKey), TexRegionManager.getInstance().getFont32());
+                StringManager.getInstance().getString(imageList.get(0).msgKey), getFont32());
         addSprite(tickerTextSprite);
 
         addChildScene(new BorderSubScene(this));

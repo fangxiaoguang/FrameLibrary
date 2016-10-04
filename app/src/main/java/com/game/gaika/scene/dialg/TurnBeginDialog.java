@@ -17,6 +17,8 @@ import com.game.gaika.data.GameTimer;
 import com.game.gaika.data.ID;
 import com.game.gaika.scene.BattlefieldScene;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/29.
  */
@@ -37,7 +39,7 @@ public class TurnBeginDialog extends DialogScene {
         GameTimer gt = gdm.gameTimer;
         String sDateTime = gt.getDayFromTurn() + "日目 " + gt.getAmPmFromTurn() + " " + gt.getHourFromTurn() + ":00";
 
-        TextSprite dataSprite = new TextSprite(82, 25, true, sDateTime, TexRegionManager.getInstance().getFont16());// "1日目  午后  9:00");
+        TextSprite dataSprite = new TextSprite(82, 25, true, sDateTime, getFont16());// "1日目  午后  9:00");
         addSprite(dataSprite);
 
         int backDay = gdm.gameTimer.getBackDay();

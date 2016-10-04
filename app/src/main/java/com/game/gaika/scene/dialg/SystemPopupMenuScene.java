@@ -135,7 +135,10 @@ public class SystemPopupMenuScene extends DialogScene {   // DialogScene {
             String oldPath = GameSetup.sdcartdPahtSave + "xiao.png";
 
 
-            SceneManager.getTopBaseLogicScene().captureScene(oldPath, this);
+            //SceneManager.getTopBaseLogicScene().captureScene(oldPath, this);
+            SceneManager.captureScene(oldPath, this, GameSetup.deviceWidthPixels, GameSetup.deviceHeightPixels);
+
+
         }
         if (msgID == MSG_ID.MSG_SCENE_SYSTEM_POPUP_MENU__CAPTURED) {
             DataSaveAction act = new DataSaveAction();

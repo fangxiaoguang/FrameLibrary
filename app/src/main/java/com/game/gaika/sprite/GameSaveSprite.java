@@ -14,6 +14,8 @@ import com.game.gaika.data.SaveManager;
 
 import java.io.File;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/2.
  */
@@ -79,10 +81,10 @@ public class GameSaveSprite extends BaseSprite {
             GameTimer gt = new GameTimer(0, turnCount);
 
             String str1 = gt.getDayFromTurn() + "日目 " + gt.getHourFromTurn() + ":00";
-            TextFlyweight textFlyweight1 = new TextFlyweight(133, 65, false, str1, TexRegionManager.getInstance().getFont16());
+            TextFlyweight textFlyweight1 = new TextFlyweight(133, 65, false, str1, getFont16());
             saveFlyweight.addChildFlyweight(textFlyweight1);
 
-            TextFlyweight textFlyweight2 = new TextFlyweight(133, 82, false, chapterName, TexRegionManager.getInstance().getFont16());
+            TextFlyweight textFlyweight2 = new TextFlyweight(133, 82, false, chapterName, getFont16());
             saveFlyweight.addChildFlyweight(textFlyweight2);
         } else {
             NormalFlyweight saveFlyweight = new NormalFlyweight(0.0f, 0.0f, "data_bt1");

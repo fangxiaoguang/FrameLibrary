@@ -3,16 +3,20 @@ package com.game.gaika.scene.dialg;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.db.DatabaseManager;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.SceneManager;
+import com.game.frame.scene.dialg.DialogScene;
+import com.game.frame.sprite.NormalSprite;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.ID;
 import com.game.gaika.data.SaveManager;
-import com.game.gaika.db.DatabaseManager;
 import com.game.gaika.debug.DebugManager;
-import com.game.gaika.scene.BaseLogicScene;
 import com.game.gaika.scene.BattlefieldScene;
 import com.game.gaika.scene.SceneFactory;
-import com.game.gaika.scene.SceneManager;
 import com.game.gaika.sprite.TextButtonSprite;
 
 import java.util.ArrayList;
@@ -27,11 +31,11 @@ public class DebugSetupDialogSaveSecendScene extends DialogScene {
     private static final int COUNT_PER_PAGE = 8;
 
     public DebugSetupDialogSaveSecendScene(BaseLogicScene pParentScene, int pFristSaveNo, ID.SCENE_INIT_TYPE pInitType) {
-        super(ID.SCENE_ID.DEBUG_DIALOG_3_DIALOG, 0.0f, 0.0f, pParentScene.getLogicCamera().getCameraWidth(), pParentScene.getLogicCamera().getCameraHeight(), pParentScene, EPointModel.POINT_MODEL_CENTER);
+        super(SCENE_ID.DEBUG_DIALOG_3_DIALOG, 0.0f, 0.0f, pParentScene.getLogicCamera().getCameraWidth(), pParentScene.getLogicCamera().getCameraHeight(), pParentScene, EPointModel.POINT_MODEL_CENTER);
 
-        float scale = DebugManager.getDebugButtonScale(pParentScene.sceneId);
+        float scale = DebugManager.getDebugButtonScale(pParentScene.getSceneId());
 
-        SQLiteDatabase dbSave = DatabaseManager.getSqLiteDatabase("save.db");//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "save.db", null, SQLiteDatabase.OPEN_READWRITE);
+        SQLiteDatabase dbSave = DatabaseManager.getSqLiteDatabase(GameSetup.sdcartdPahtDB +"save.db");//SQLiteDatabase.openDatabase(GameSetup.sdcartdPahtDB + "save.db", null, SQLiteDatabase.OPEN_READWRITE);
         if (pInitType == ID.SCENE_INIT_TYPE.INIT) {
             currentPage = 1;
             saveNos.clear();
@@ -51,13 +55,13 @@ public class DebugSetupDialogSaveSecendScene extends DialogScene {
         }
         if (currentPage > 1) {
             //<-
-            NormalSprite liftSprite = new NormalSprite(10, 110, "scroolbt", 0, new TouchMessage(ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__LEFT, null, this), scale);
+            NormalSprite liftSprite = new NormalSprite(10, 110, "scroolbt", 0, new TouchMessage(MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__LEFT, null, this), scale);
             addSprite(liftSprite);
         }
 
         if (saveNos.size() > currentPage * COUNT_PER_PAGE) {
             //->
-            NormalSprite liftSprite = new NormalSprite(450, 110, "scroolbt", 0, new TouchMessage(ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__RIGHT, null, this), scale);
+            NormalSprite liftSprite = new NormalSprite(450, 110, "scroolbt", 0, new TouchMessage(MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__RIGHT, null, this), scale);
             addSprite(liftSprite);
 
         }
@@ -83,7 +87,7 @@ public class DebugSetupDialogSaveSecendScene extends DialogScene {
                 cursor.close();
 
 
-                TextButtonSprite button1 = new TextButtonSprite(x, y, saveNo + "--" + date, new TouchMessage(ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_1, null, this, saveNo), scale);
+                TextButtonSprite button1 = new TextButtonSprite(x, y, saveNo + "--" + date, new TouchMessage(MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_1, null, this, saveNo), scale);
                 addSprite(button1);
                 y += 40;
             }
@@ -94,7 +98,7 @@ public class DebugSetupDialogSaveSecendScene extends DialogScene {
 
 
 //        y += 30;
-        TextButtonSprite button8 = new TextButtonSprite(x, y, "Return", new TouchMessage(ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_8, null, this), scale);
+        TextButtonSprite button8 = new TextButtonSprite(x, y, "Return", new TouchMessage(MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_8, null, this), scale);
         addSprite(button8);
 
         dbSave.close();
@@ -112,48 +116,48 @@ public class DebugSetupDialogSaveSecendScene extends DialogScene {
 
     @Override
     public void onHandlMessage(TouchMessage pTouchMessage) {
-        ID.MSG_ID msgID = pTouchMessage.getMessageID();
+        MSG_ID msgID = pTouchMessage.getMessageID();
 
 
-        if (msgID == ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__LEFT) {
+        if (msgID == MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__LEFT) {
             currentPage--;
 
             BaseLogicScene parentScene = SceneManager.getTopBaseLogicScene();
             if (parentScene != null) {
                 parentScene.setDialogSecne(null);
-                BaseLogicScene topScene = SceneFactory.createScene(parentScene.sceneId, ID.SCENE_INIT_TYPE.NOT_INIT);
+                BaseLogicScene topScene = SceneFactory.createScene(parentScene.getSceneId(), ID.SCENE_INIT_TYPE.NOT_INIT);
                 topScene.setDialogSecne(new DebugSetupDialogSaveSecendScene(topScene, 0, ID.SCENE_INIT_TYPE.NOT_INIT));
                 SceneManager.render(topScene);
             }
         }
 
-        if (msgID == ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__RIGHT) {
+        if (msgID == MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__RIGHT) {
             currentPage++;
 
             BaseLogicScene parentScene = SceneManager.getTopBaseLogicScene();
             if (parentScene != null) {
                 parentScene.setDialogSecne(null);
-                BaseLogicScene topScene = SceneFactory.createScene(parentScene.sceneId, ID.SCENE_INIT_TYPE.NOT_INIT);
+                BaseLogicScene topScene = SceneFactory.createScene(parentScene.getSceneId(), ID.SCENE_INIT_TYPE.NOT_INIT);
                 topScene.setDialogSecne(new DebugSetupDialogSaveSecendScene(topScene, 0, ID.SCENE_INIT_TYPE.NOT_INIT));
                 SceneManager.render(topScene);
             }
         }
 
-        if (msgID == ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_1) {
+        if (msgID == MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_1) {
             int  saveNo = pTouchMessage.getParam();
             GameSetup.isDebug_trackingUserProcess = false;
             SaveManager.load(saveNo);
-            BattlefieldScene topScene = new BattlefieldScene(true);//SceneFactory.createScene(ID.SCENE_ID.BATTLEFIELD, ID.SCENE_INIT_TYPE.NOT_INIT);
+            BattlefieldScene topScene = new BattlefieldScene(true);//SceneFactory.createScene(SCENE_ID.BATTLEFIELD, ID.SCENE_INIT_TYPE.NOT_INIT);
 //            topScene.buildFSM(STATE_ID_SELECTED_NON);
             SceneManager.render(topScene);
         }
 
-        if (msgID == ID.MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_8) {
+        if (msgID == MSG_ID.MSG_SCENE_DEBUG_SETUP_DIALOG_3__BUTTON_8) {
 
             BaseLogicScene parentScene = SceneManager.getTopBaseLogicScene();
             if (parentScene != null) {
                 parentScene.setDialogSecne(null);
-                BaseLogicScene topScene = SceneFactory.createScene(parentScene.sceneId, ID.SCENE_INIT_TYPE.NOT_INIT);
+                BaseLogicScene topScene = SceneFactory.createScene(parentScene.getSceneId(), ID.SCENE_INIT_TYPE.NOT_INIT);
                 topScene.setDialogSecne(new DebugSetupDialogSaveFristScene(topScene, ID.SCENE_INIT_TYPE.NOT_INIT));
                 SceneManager.render(topScene);
             }

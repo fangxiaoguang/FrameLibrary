@@ -1,10 +1,12 @@
 package com.game.gaika.scene.dialg;
 
-import com.game.gaika.FSM.TouchMessage;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.BaseLogicScene;
+import com.game.frame.scene.SCENE_ID;
+import com.game.frame.scene.dialg.DialogScene;
+import com.game.frame.sprite.NormalSprite;
+import com.game.frame.sprite.TextSprite;
 import com.game.gaika.data.GameSetup;
-import com.game.gaika.data.ID;
-import com.game.gaika.scene.BaseLogicScene;
-import com.game.gaika.texture.TexRegionManager;
 
 import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.DelayModifier;
@@ -13,12 +15,14 @@ import org.andengine.entity.modifier.SequenceEntityModifier;
 
 import java.util.List;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/29.
  */
 public class Dialog5Scene extends DialogScene {
     public Dialog5Scene(BaseLogicScene pParentScene, List<String> pTexts ) {
-        super(ID.SCENE_ID.DIALOG_5_DIALOG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
+        super(SCENE_ID.DIALOG_5_DIALOG, 0.0f, 0.0f, 406.0f, 142.0f, pParentScene, EPointModel.POINT_MODEL_CENTER);
 
         IEntityModifier modifier = new SequenceEntityModifier(new DelayModifier(GameSetup.DELAY_CRASH_DLG_S ), new AlphaModifier(0.01f, 1.0f, 0.0f));
 
@@ -30,7 +34,7 @@ public class Dialog5Scene extends DialogScene {
         float y = 45;
 
         for(String text : pTexts){
-            TextSprite textSprite = new TextSprite(x, y, true, text, TexRegionManager.getInstance().getFont16());
+            TextSprite textSprite = new TextSprite(x, y, true, text, getFont16());
             IEntityModifier modifier2 = new SequenceEntityModifier(new DelayModifier(GameSetup.DELAY_CRASH_DLG_S ), new AlphaModifier(0.01f, 1.0f, 0.0f));
             textSprite.registerEntityModifier(modifier2);
             addSprite(textSprite);

@@ -17,6 +17,7 @@ import com.game.gaika.scene.sub.BorderSubScene;
 import com.game.gaika.sprite.BeginLocalSprite;
 
 import static com.game.frame.sound.SoundManager.playSound;
+import static com.game.frame.texture.TexRegionManager.getFont16;
 import static com.game.gaika.scene.BeginLocalScene.StateID.*;
 
 import static com.game.gaika.data.ID.COUNTRY.*;
@@ -88,9 +89,9 @@ public class BeginLocalScene extends SimpleScene {
             str1 = StringManager.getInstance().getString("S02006");
             str2 = StringManager.getInstance().getString("S02016");
         }
-        TextSprite textSprite1 = new TextSprite(630 + 120, 490, false, str1, TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite1 = new TextSprite(630 + 120, 490, false, str1, getFont16());
         addSprite(textSprite1);
-        TextSprite textSprite2 = new TextSprite(630 + 120, 540, false, str2, TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite2 = new TextSprite(630 + 120, 540, false, str2, getFont16());
         addSprite(textSprite2);
 
 

@@ -10,6 +10,8 @@ import com.game.frame.sprite.NormalSprite;
 import com.game.frame.sprite.TextSprite;
 import com.game.frame.texture.TexRegionManager;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/6/30.
  */
@@ -27,7 +29,7 @@ public class Dialg6YesNoDialogScene extends DialogScene {
         NormalSprite bkSprite = new NormalSprite(0.0f, 0.0f, "dialg6");
         addSprite(bkSprite);
 
-        TextSprite textSprite = new TextSprite(40, 45, true, pText, TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite = new TextSprite(40, 45, true, pText, getFont16());
         addSprite(textSprite);
 
         NormalSprite yesSprite = new NormalSprite(43, 127, "dialg6bt", 2, pYesMsg);

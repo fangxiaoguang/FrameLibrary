@@ -6,10 +6,11 @@ import com.game.frame.flyweight.NormalFlyweight;
 import com.game.frame.flyweight.TextFlyweight;
 import com.game.frame.fsm.TouchMessage;
 import com.game.frame.sprite.BaseSprite;
-import com.game.frame.texture.TexRegionManager;
 import com.game.gaika.data.City;
 import com.game.gaika.data.GameSetup;
 
+import static com.game.frame.texture.TexRegionManager.getFont12Stroke;
+import static com.game.frame.texture.TexRegionManager.getFont16;
 import static com.game.gaika.data.ID.TEAM_COLOR.*;
 import static com.game.gaika.data.ID.CITY_TYPE.*;
 
@@ -23,7 +24,7 @@ public class CitySprite extends BaseSprite {
 
         NormalFlyweight bkFlyweight = new NormalFlyweight(0.0f, 0.0f, "invisible50_48");
 
-        TextFlyweight textFlyweight = new TextFlyweight(0.0f, 0.0f, true, pCityNode.name, TexRegionManager.getInstance().getFont12Stroke());
+        TextFlyweight textFlyweight = new TextFlyweight(0.0f, 0.0f, true, pCityNode.name, getFont12Stroke());
         bkFlyweight.addChildFlyweight(textFlyweight);
 
         int ci = 4;
@@ -78,7 +79,7 @@ public class CitySprite extends BaseSprite {
         bkFlyweight.addChildFlyweight(expFlyweight);
 
         if (GameSetup.isDebug_city_sprite_xy) {
-            TextFlyweight xyFlyweight = new TextFlyweight(0.0f, 0.0f, true, "(" + pCityNode.getMapX() + "," + pCityNode.getMapY() + ")", TexRegionManager.getInstance().getFont16());
+            TextFlyweight xyFlyweight = new TextFlyweight(0.0f, 0.0f, true, "(" + pCityNode.getMapX() + "," + pCityNode.getMapY() + ")", getFont16());
             bkFlyweight.addChildFlyweight(xyFlyweight);
         }
 

@@ -18,6 +18,8 @@ import com.game.gaika.data.weapon.BaseWeapon;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/26.
  */
@@ -48,10 +50,10 @@ public class LvUpDialogScene extends DialogScene {
         addSprite(lvSprite);
 
         String s1 = "BLUE";
-        TextSprite textSprite1 = new TextSprite(135, 45, true, s1 + "军作战单位" + weapon.info.name, TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite1 = new TextSprite(135, 45, true, s1 + "军作战单位" + weapon.info.name, getFont16());
         addSprite(textSprite1);
 
-        TextSprite textSprite2 = new TextSprite(135, 65, true, "级别上升。", TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite2 = new TextSprite(135, 65, true, "级别上升。", getFont16());
         addSprite(textSprite2);
 
         List<Integer> index1 = new ArrayList<Integer>();

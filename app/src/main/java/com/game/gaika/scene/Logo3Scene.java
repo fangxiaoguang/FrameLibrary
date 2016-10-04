@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.game.frame.sound.SoundManager.playSound;
+import static com.game.frame.texture.TexRegionManager.getFont32;
 
 
 /**
@@ -100,7 +101,7 @@ public class Logo3Scene extends SimpleScene {
         int initX = 0;//-100;// 25;
         int count = 0;
         for (String s : ss) {
-            TextSprite textSprite = new TextSprite(initX, 700, true, s, TexRegionManager.getInstance().getFont32());
+            TextSprite textSprite = new TextSprite(initX, 700, true, s, getFont32());
 
             textSprite.registerEntityModifier(new SequenceEntityModifier(
                             new DelayModifier(1.0f * count), new ParallelEntityModifier(

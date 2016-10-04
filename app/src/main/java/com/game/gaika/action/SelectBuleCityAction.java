@@ -1,8 +1,8 @@
 package com.game.gaika.action;
 
+import com.game.frame.scene.SceneManager;
 import com.game.gaika.data.City;
 import com.game.gaika.data.GameDataManager;
-import com.game.gaika.scene.SceneManager;
 import com.game.gaika.scene.WeaponSetoutScene;
 
 /**

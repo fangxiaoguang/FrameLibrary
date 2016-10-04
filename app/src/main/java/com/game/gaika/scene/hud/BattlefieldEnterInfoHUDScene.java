@@ -21,6 +21,8 @@ import org.andengine.util.color.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/8/18.
  */
@@ -82,7 +84,7 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
         String[] ss = gdm.chapters.get(newSelectedChapterID).battleInfo.split("\\|");
         int i = 0;
         for (String s : ss) {
-            TextSprite textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, s, TexRegionManager.getInstance().getFont16());
+            TextSprite textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, s, getFont16());
             textSprite.setScale(unZoom);
             addSprite(textSprite);
             i++;
@@ -91,17 +93,17 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
 
         i = 12;
         //【胜利条件】|  敌方全灭||
-        TextSprite textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "【胜利条件】", TexRegionManager.getInstance().getFont16());
+        TextSprite textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "【胜利条件】", getFont16());
         textSprite.setScale(unZoom);
         addSprite(textSprite);
         i++;
 
-        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, gdm.chapters.get(newSelectedChapterID).victoryTerm, TexRegionManager.getInstance().getFont16());
+        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, gdm.chapters.get(newSelectedChapterID).victoryTerm, getFont16());
         textSprite.setScale(unZoom);
         addSprite(textSprite);
         i++;
 
-        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "", TexRegionManager.getInstance().getFont16());
+        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "", getFont16());
         textSprite.setScale(unZoom);
         addSprite(textSprite);
         i++;
@@ -135,7 +137,7 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
 
 
         // 【敌方势力】|
-        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "【敌方势力】", TexRegionManager.getInstance().getFont16());
+        textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "【敌方势力】", getFont16());
         textSprite.setScale(unZoom);
         addSprite(textSprite);
         i++;
@@ -150,33 +152,33 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
         return "通用直升机";*/
 
         if (weaponTypeSet.contains(WEAPON_TYPE.BATTLE_PLANE)) {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战斗机", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战斗机", getFont16());
         } else {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战斗机", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战斗机", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.ATTACK_PLANE)) {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "攻击机", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "攻击机", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "攻击机", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "攻击机", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.ATTACK_HELICOPTER)) {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "武装直升机", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "武装直升机", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "武装直升机", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "武装直升机", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.UTILITY_HELICOPTER)) {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "通用直升机", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "通用直升机", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "通用直升机", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "通用直升机", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
@@ -192,33 +194,33 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
         return "自行火炮";*/
 
         if (weaponTypeSet.contains(WEAPON_TYPE.TANK)) {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "坦克", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "坦克", getFont16());
         } else {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "坦克", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "坦克", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.ARMORED_CAR)) {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "装甲车", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "装甲车", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "装甲车", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "装甲车", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.SCOUT_CAR)) {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "侦察车", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "侦察车", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "侦察车", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "侦察车", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.SELF_MECHANIZED_GUN)) {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "自行火炮", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "自行火炮", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "自行火炮", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "自行火炮", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
@@ -233,33 +235,33 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
         return "步兵";*/
 
         if (weaponTypeSet.contains(WEAPON_TYPE.ANTIAIRCRAFT_GUN)) {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "自行高射炮", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "自行高射炮", getFont16());
         } else {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "自行高射炮", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "自行高射炮", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.ANTIAIRCRAFT_MISSILE)) {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "对空导弹", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "对空导弹", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "对空导弹", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "对空导弹", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.INFANTRY_FIGHTING_VEHICLE)) {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "步兵战车", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "步兵战车", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "步兵战车", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 2) * unZoom, (75 + i * 18) * unZoom, true, "步兵战车", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.INFANTRY)) {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "步兵", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "步兵", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "步兵", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 3) * unZoom, (75 + i * 18) * unZoom, true, "步兵", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
@@ -271,17 +273,17 @@ public class BattlefieldEnterInfoHUDScene extends HUDScene {
 
 
         if (weaponTypeSet.contains(WEAPON_TYPE.BATTLE_SHIP)) {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战舰", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战舰", getFont16());
         } else {
-            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战舰", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - 451 * unZoom, (75 + i * 18) * unZoom, true, "战舰", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);
 
         if (weaponTypeSet.contains(WEAPON_TYPE.SUBMARINE)) {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "潜水艇", TexRegionManager.getInstance().getFont16());
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "潜水艇", getFont16());
         } else {
-            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "潜水艇", TexRegionManager.getInstance().getFont16(), Color.RED);
+            textSprite = new TextSprite(width - (451 - OX * 1) * unZoom, (75 + i * 18) * unZoom, true, "潜水艇", getFont16(), Color.RED);
         }
         textSprite.setScale(unZoom);
         addSprite(textSprite);

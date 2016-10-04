@@ -8,6 +8,8 @@ import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.ID;
 import com.game.gaika.scene.BattlefieldScene;
+import com.game.gaika.scene.ChapterCompleteScene;
+import com.game.gaika.scene.ChapterLoseScene;
 
 import java.util.Random;
 

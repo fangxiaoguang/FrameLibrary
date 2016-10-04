@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
 import static com.game.gaika.data.ID.SCENE_INIT_TYPE.NOT_INIT;
 import static com.game.gaika.data.ID.TEAM_COLOR.*;
 import static com.game.gaika.data.ID.CITY_TYPE.*;
@@ -43,7 +44,7 @@ public class BattlefieldInfoScene extends SimpleScene {
         //--------------------------------------------------------------
         String chapterName = gdm.getCurrentChapter().cName;
 
-        TextSprite nameSprite = new TextSprite(169, 160, true, chapterName, TexRegionManager.getInstance().getFont16());
+        TextSprite nameSprite = new TextSprite(169, 160, true, chapterName, getFont16());
         addSprite(nameSprite);
 
         //int turnCount = gdm.currentTurn;
@@ -53,7 +54,7 @@ public class BattlefieldInfoScene extends SimpleScene {
         String sDateTime = "作战时间　" + gtMax.getDayFromTurn() + "日目  " + gtMax.getHourFromTurn() + ":00" + "限时／现在"
                 + gt.getDayFromTurn() + "日目 " + gt.getHourFromTurn() + ":00";
 
-        TextSprite timeSprite = new TextSprite(295, 160, true, sDateTime, TexRegionManager.getInstance().getFont16());// "作战时间　4日目21:00到到／现在1日目7:00");
+        TextSprite timeSprite = new TextSprite(295, 160, true, sDateTime, getFont16());// "作战时间　4日目21:00到到／现在1日目7:00");
         addSprite(timeSprite);
 
 
@@ -70,7 +71,7 @@ public class BattlefieldInfoScene extends SimpleScene {
 
         int detailCount = 0;
         for (String detail : victoryTerms) {
-            TextSprite detileSprite = new TextSprite(161, 218 + 17 * detailCount, true, detail, TexRegionManager.getInstance().getFont16());
+            TextSprite detileSprite = new TextSprite(161, 218 + 17 * detailCount, true, detail, getFont16());
             addSprite(detileSprite);
             detailCount++;
         }

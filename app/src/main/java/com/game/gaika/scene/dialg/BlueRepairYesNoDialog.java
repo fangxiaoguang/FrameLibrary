@@ -11,6 +11,8 @@ import com.game.frame.texture.TexRegionManager;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.weapon.BaseWeapon;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/9/1.
  */
@@ -43,11 +45,11 @@ public class BlueRepairYesNoDialog  extends DialogScene {
 
 
 
-        TextSprite text1Sprite = new TextSprite(130, 45, true, "消耗" + pNeedSupply + "补给物资", TexRegionManager.getInstance().getFont16());
+        TextSprite text1Sprite = new TextSprite(130, 45, true, "消耗" + pNeedSupply + "补给物资", getFont16());
         addSprite(text1Sprite);
-        TextSprite text2Sprite = new TextSprite(130, 70, true,"补充" + (pToLifeEx - pFromLifeEx) + blueNode.info.getUnitString(), TexRegionManager.getInstance().getFont16());
+        TextSprite text2Sprite = new TextSprite(130, 70, true,"补充" + (pToLifeEx - pFromLifeEx) + blueNode.info.getUnitString(), getFont16());
         addSprite(text2Sprite);
-        TextSprite text3Sprite = new TextSprite(130, 95,true, blueNode.info.name, TexRegionManager.getInstance().getFont16());
+        TextSprite text3Sprite = new TextSprite(130, 95,true, blueNode.info.name, getFont16());
         addSprite(text3Sprite);
 
 

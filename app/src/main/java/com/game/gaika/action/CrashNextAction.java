@@ -1,5 +1,11 @@
 package com.game.gaika.action;
 
+import android.util.Pair;
+
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.scene.SceneManager;
+import com.game.frame.sprite.DelaySprite;
 import com.game.gaika.data.EffectNode;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
@@ -44,19 +50,19 @@ public class CrashNextAction implements BaseAction {
             texts.add(weapon.info.name);// "f-16);
             texts.add("因燃料耗尽坠毁。");// " 因燃料耗尽坠毁。");
 
-            battlefieldScene.getLogicCamera().setCente(weapon.getPixelX(), weapon.getPixelY());
+            battlefieldScene.getLogicCamera().setCente(new Pair<Float, Float>(weapon.getPixelX(), weapon.getPixelY()));
             Dialog5Scene dialog5Scene = new Dialog5Scene(battlefieldScene, texts);
 
             battlefieldScene.setDialogSecne(dialog5Scene);
 
             gdm.effectNodes.add(new EffectNode(weapon.getMapX(), weapon.getMapY(), EffectNode.EEffectID.EFFECT_ID_MARKER04,GameSetup.DELAY_CRASH_DLG_S ));
 
-            battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_CRASH_DLG_S + GameSetup.DELAY_EFFECT_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_NEXT, null, battlefieldScene)));
+            battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_CRASH_DLG_S + GameSetup.DELAY_EFFECT_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_NEXT, null, battlefieldScene)));
 
             SceneManager.render(battlefieldScene);
         } else {
             BattlefieldScene battlefieldScene = new BattlefieldScene(false);
-            battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(ID.MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_TIME_OUT, null, battlefieldScene)));
+            battlefieldScene.addSprite(new DelaySprite(GameSetup.DELAY_SHORT_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__CRASH_TIME_OUT, null, battlefieldScene)));
             SceneManager.render(battlefieldScene);
         }
 

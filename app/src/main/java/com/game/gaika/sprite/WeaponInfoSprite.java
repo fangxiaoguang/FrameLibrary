@@ -4,11 +4,12 @@ import com.game.frame.flyweight.NormalFlyweight;
 import com.game.frame.flyweight.NumberFlyweight;
 import com.game.frame.flyweight.TextFlyweight;
 import com.game.frame.sprite.BaseSprite;
-import com.game.frame.texture.TexRegionManager;
 import com.game.gaika.data.ID;
 import com.game.gaika.data.weapon.BaseWeapon;
 import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.weapon.WeaponFactory;
+
+import static com.game.frame.texture.TexRegionManager.getFont12;
 
 /**
  * Created by fangxg on 2015/6/27.
@@ -37,10 +38,10 @@ public class WeaponInfoSprite extends BaseSprite {
         grFlyweight.setAlpha(pAlpha - 0.2f);
         bkFlyweight.addChildFlyweight(grFlyweight);
 
-        TextFlyweight textFlyweight = new TextFlyweight(13.0f, 17.0f, true, pWeapNode.info.name, TexRegionManager.getInstance().getFont12());
+        TextFlyweight textFlyweight = new TextFlyweight(13.0f, 17.0f, true, pWeapNode.info.name, getFont12());
         bkFlyweight.addChildFlyweight(textFlyweight);
 
-        TextFlyweight text2Flyweight = new TextFlyweight(13.0f, 35.0f, true, pWeapNode.info.type.toDescribeString(), TexRegionManager.getInstance().getFont12());
+        TextFlyweight text2Flyweight = new TextFlyweight(13.0f, 35.0f, true, pWeapNode.info.type.toDescribeString(), getFont12());
         bkFlyweight.addChildFlyweight(text2Flyweight);
 
         NormalFlyweight flagFlyweight = new NormalFlyweight(169.0f, 13.0f, "flag03", pWeapNode.info.country.ordinal());
@@ -160,7 +161,7 @@ public class WeaponInfoSprite extends BaseSprite {
         int detailCount = 0;
         for (String detail : pWeapNode.info.getDetails()) {
             NormalFlyweight normalFlyweight = new NormalFlyweight(0, 225 + 14 * detailCount, "weap_sp1", 0);
-            TextFlyweight textFlyweight1 = new TextFlyweight(10, 0, true, detail, TexRegionManager.getInstance().getFont12());
+            TextFlyweight textFlyweight1 = new TextFlyweight(10, 0, true, detail, getFont12());
 
             if (pAlpha <= 0.8f) {
                 textFlyweight1.setAlpha(pAlpha + 0.2f);

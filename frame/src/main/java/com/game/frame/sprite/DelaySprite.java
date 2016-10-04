@@ -14,9 +14,9 @@ public class DelaySprite extends BaseSprite {
 //        if(GameSetup.isDebug_delay_to_touch){
 //
 //            NormalFlyweight bkFlyweight = new NormalFlyweight(0, 0, "greenBox", 2);
-//            TextFlyweight timeFlyweight = new TextFlyweight(0.0f, 48.0f,true , "delayS = " + pDelayTimeS, TexRegionManager.getInstance().getFont12() );
+//            TextFlyweight timeFlyweight = new TextFlyweight(0.0f, 48.0f,true , "delayS = " + pDelayTimeS, getFont12() );
 //            bkFlyweight.addChildFlyweight(timeFlyweight);
-//            TextFlyweight msgFlyweight = new TextFlyweight(0.0f, 48.0f + 12.0f,true , "MSG_ID = " + pTimeOutMessage.getMessageID(), TexRegionManager.getInstance().getFont12());
+//            TextFlyweight msgFlyweight = new TextFlyweight(0.0f, 48.0f + 12.0f,true , "MSG_ID = " + pTimeOutMessage.getMessageID(), getFont12());
 //            bkFlyweight.addChildFlyweight(msgFlyweight);
 //
 //            setFlyweight(bkFlyweight);

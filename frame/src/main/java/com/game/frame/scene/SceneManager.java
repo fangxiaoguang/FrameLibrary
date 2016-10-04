@@ -1,6 +1,10 @@
 package com.game.frame.scene;
 
 import com.game.frame.flyweight.BaseFlyweight;
+import com.game.frame.fsm.IMessageHandler;
+import com.game.frame.fsm.MSG_ID;
+import com.game.frame.fsm.TouchMessage;
+import com.game.frame.graph.MyScreenCapture;
 import com.game.frame.scene.camera.CameraRange;
 import com.game.frame.scene.dialg.DialogScene;
 
@@ -14,7 +18,7 @@ import static com.game.frame.global.FrameGlobal.getGameActivity;
 public class SceneManager {
 
     private static BaseLogicScene topBaseLogicScene;
-
+    private static Scene bkTopScne;
     public static void init() {
 
     }
@@ -31,10 +35,10 @@ public class SceneManager {
                 BaseFlyweight.clearTagedEntity();
                 SceneManager.topBaseLogicScene = pBaseLogicScene;
 
-                Scene tScene = pBaseLogicScene.getScene();
 
+                bkTopScne =  pBaseLogicScene.getScene();
                 getGameActivity().getEngine().getScene().clearChildScene();
-                getGameActivity().getEngine().getScene().setChildSceneModal(tScene);
+                getGameActivity().getEngine().getScene().setChildSceneModal(bkTopScne);
 
 
 //                HUD mHud = null;
@@ -52,7 +56,7 @@ public class SceneManager {
                         getGameActivity().getEngine().getCamera().getHUD().clearTouchAreas();
                     }
 
-                    Scene lostScene = tScene;
+                    Scene lostScene = bkTopScne;
                     lostScene.clearTouchAreas();
                     lostScene.setOnSceneTouchListener(null);
 
@@ -74,6 +78,34 @@ public class SceneManager {
             }
         });
     }
+    public static void captureScene(String path, final IMessageHandler pPopupMenuHandler, float pDeviceWidthPixels, float pDeviceHeightPixels) {
 
+        MyScreenCapture screenCapture = new MyScreenCapture();
+        bkTopScne.attachChild(screenCapture);
+
+        float captureWidth = pDeviceHeightPixels * 4.0f / 3.0f;
+        float captureHeight = pDeviceHeightPixels;
+
+        float captureX = (pDeviceWidthPixels - captureWidth) / 2;
+        float captureY = 0.0f;
+
+
+        screenCapture.capture((int) captureX, (int) captureY, (int) captureWidth, (int) captureHeight,
+                path, new MyScreenCapture.IScreenCaptureCallback() {
+
+                    @Override
+                    public void onScreenCaptured(String pFilePath) {
+
+                        TouchMessage msg = new TouchMessage(MSG_ID.MSG_SCENE_SYSTEM_POPUP_MENU__CAPTURED, null, pPopupMenuHandler);
+                        msg.doProcess();
+                    }
+
+                    @Override
+                    public void onScreenCaptureFailed(String pFilePath, Exception pException) {
+
+                    }
+
+                });
+    }
 
 }

@@ -18,6 +18,7 @@ import com.game.gaika.data.SaveManager;
 import com.game.gaika.scene.sub.BorderSubScene;
 
 import static com.game.frame.sound.SoundManager.playSound;
+import static com.game.frame.texture.TexRegionManager.getFont32;
 
 
 /**
@@ -61,7 +62,7 @@ public class SettingScene extends SimpleScene {
         NormalSprite button1 = new NormalSprite(200, 420, "oper_bt7", 2, new TouchMessage(MSG_ID.MSG_SCENE_SETTING_ZOOM_DOWN, null, this, 0));
         addSprite(button1);
 
-        TextSprite textSprite = new TextSprite(290, 418, true, StringManager.getInstance().getString("S08001"), TexRegionManager.getInstance().getFont32());
+        TextSprite textSprite = new TextSprite(290, 418, true, StringManager.getInstance().getString("S08001"), getFont32());
         addSprite(textSprite);
 
 //        TiledSprite zoomText = getZoomSprite(465, 426, GameSetup.ZOOM);
@@ -86,7 +87,7 @@ public class SettingScene extends SimpleScene {
         //音效开关
 
 
-        TextSprite text2Sprite = new TextSprite(200, 470, true, StringManager.getInstance().getString("S08002"), TexRegionManager.getInstance().getFont32());
+        TextSprite text2Sprite = new TextSprite(200, 470, true, StringManager.getInstance().getString("S08002"), getFont32());
         addSprite(text2Sprite);
 
 
@@ -112,7 +113,7 @@ public class SettingScene extends SimpleScene {
         NormalSprite button3 = new NormalSprite(200, 420 + offY, "oper_bt7", 2, new TouchMessage(MSG_ID.MSG_SCENE_SETTING_VOLUME_DOWN, null, this, 0));
         addSprite(button3);
 
-        TextSprite text3Sprite = new TextSprite(290, 418 + offY, true, StringManager.getInstance().getString("S08003"), TexRegionManager.getInstance().getFont32());
+        TextSprite text3Sprite = new TextSprite(290, 418 + offY, true, StringManager.getInstance().getString("S08003"), getFont32());
         addSprite(text3Sprite);
 
         int i3 = ((int) (GameSetup.settingSoundVolume * 100.0f));

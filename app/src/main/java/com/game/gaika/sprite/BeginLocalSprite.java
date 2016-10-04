@@ -7,6 +7,8 @@ import com.game.frame.fsm.TouchMessage;
 import com.game.frame.sprite.BaseSprite;
 import com.game.frame.texture.TexRegionManager;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/6/19.
  */
@@ -36,7 +38,7 @@ public class BeginLocalSprite extends BaseSprite {
        /* Text text = BaseRender.getText16(true, 8, 3, pLable);
         sprite.attachChild(text);*/
 
-        TextFlyweight textFlyweight = new TextFlyweight(-10, 15, true, pLable, TexRegionManager.getInstance().getFont16());
+        TextFlyweight textFlyweight = new TextFlyweight(-10, 15, true, pLable, getFont16());
         normalFlyweight.addChildFlyweight(textFlyweight);
 
         NormalFlyweight flagFlyweight = new NormalFlyweight(21, 94, "flag03", flagIndex);

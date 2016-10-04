@@ -93,7 +93,7 @@ public class BattlefieldHUDScene extends HUDScene {
 //
 //        if (GameSetup.isDebug_HUDTextBox) {
 //            String info = DebugManager.getInstance().getDebugInfoString();
-//            TextSprite debugInfoSprite = new TextSprite(0.0f, 0.0f, true, info, TexRegionManager.getInstance().getFont12());
+//            TextSprite debugInfoSprite = new TextSprite(0.0f, 0.0f, true, info, getFont12());
 //            addSprite(debugInfoSprite);
 //        }
 

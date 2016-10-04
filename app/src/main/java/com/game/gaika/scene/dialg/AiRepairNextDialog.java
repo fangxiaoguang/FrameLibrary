@@ -13,6 +13,8 @@ import com.game.gaika.data.GameDataManager;
 import com.game.gaika.data.GameSetup;
 import com.game.gaika.data.weapon.BaseWeapon;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/29.
  */
@@ -48,11 +50,11 @@ public class AiRepairNextDialog extends DialogScene {
         addSprite(fromLifeExSprite);
         NormalSprite toLifeExSprite = new NormalSprite(90, 105 - 10, "font01", toLifeEx);
         addSprite(toLifeExSprite);
-        TextSprite text1Sprite = new TextSprite(130, 45 - 10, true, "消耗" + needSupply + "补给物资", TexRegionManager.getInstance().getFont16());
+        TextSprite text1Sprite = new TextSprite(130, 45 - 10, true, "消耗" + needSupply + "补给物资", getFont16());
         addSprite(text1Sprite);
-        TextSprite text2Sprite = new TextSprite(130, 70 - 10, true, "补充" + (toLifeEx - fromLifeEx) + weapon.info.getUnitString(), TexRegionManager.getInstance().getFont16());
+        TextSprite text2Sprite = new TextSprite(130, 70 - 10, true, "补充" + (toLifeEx - fromLifeEx) + weapon.info.getUnitString(), getFont16());
         addSprite(text2Sprite);
-        TextSprite text3Sprite = new TextSprite(130, 95 - 10, true, weapon.info.name, TexRegionManager.getInstance().getFont16());
+        TextSprite text3Sprite = new TextSprite(130, 95 - 10, true, weapon.info.name, getFont16());
         addSprite(text3Sprite);
 
         addSprite(new DelaySprite(GameSetup.DELAY_AI_RE_SUPPLY_NEXT_S, new TouchMessage(MSG_ID.MSG_SCENE_BATTLEFIELD__AI_REPAIR_NEXT, null, pParentScene)));

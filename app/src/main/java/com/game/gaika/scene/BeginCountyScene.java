@@ -197,7 +197,7 @@ public class BeginCountyScene extends SimpleScene{
                 || msgID == MSG_ID.MSG_SCENE_COUNTRY_MENU__BUTTON_SELECT_COUNTY_3 || msgID == MSG_ID.MSG_SCENE_COUNTRY_MENU__BUTTON_SELECT_COUNTY_4
                 || msgID == MSG_ID.MSG_SCENE_COUNTRY_MENU__BUTTON_SELECT_COUNTY_5 || msgID == MSG_ID.MSG_SCENE_COUNTRY_MENU__BUTTON_SELECT_COUNTY_6) {
 
-            SoundManager.getInstance().playSound("select01");
+            playSound("select01");
             if (msgID == MSG_ID.MSG_SCENE_COUNTRY_MENU__BUTTON_SELECT_COUNTY_1) {
                 gdm.gameBeginCounty = USA;
             }

@@ -15,6 +15,8 @@ import com.game.gaika.data.weapon.WeaponFactory;
 import com.game.gaika.data.weapon.WeaponInfo;
 import com.game.gaika.sprite.WeaponInfoSprite;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/1.
  */
@@ -32,10 +34,10 @@ public class CanBuyWeaponDialgScene extends DialogScene {
         NormalSprite testBkSlprite = new NormalSprite((800 - 406) / 2, 50, "dialg5");
         addSprite(testBkSlprite);
 
-		TextSprite textSprite1 = new TextSprite((800 - 406) / 2 + 50, 50 + 50, true, StringManager.getInstance().getString("S05001") , TexRegionManager.getInstance().getFont16());
+		TextSprite textSprite1 = new TextSprite((800 - 406) / 2 + 50, 50 + 50, true, StringManager.getInstance().getString("S05001") , getFont16());
 		addSprite(textSprite1);
 
-		TextSprite textSprite2 = new TextSprite((800 - 406) / 2 + 50, 50 + 50 +  25, true, info.name + " 了。" , TexRegionManager.getInstance().getFont16());
+		TextSprite textSprite2 = new TextSprite((800 - 406) / 2 + 50, 50 + 50 +  25, true, info.name + " 了。" , getFont16());
 		addSprite(textSprite2);
 
 		WeaponInfoSprite infoSprite = new WeaponInfoSprite(WeaponFactory.getInstance().newWeapon(info), WeaponInfoSprite.INFO_CARD_ALPHA);

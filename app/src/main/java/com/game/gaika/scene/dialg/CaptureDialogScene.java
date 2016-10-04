@@ -21,6 +21,8 @@ import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.modifier.SequenceEntityModifier;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/26.
  */
@@ -32,7 +34,7 @@ public class CaptureDialogScene extends DialogScene {
 
         City city = gdm.getCurrentChapter().getGameMap().citys.get(weapon.x * 100 + weapon.y);
 
-//            SoundManager.getInstance().playSound("messag01");
+//            playSound("messag01");
 
             NormalSprite bkSprite = new NormalSprite(0.0f, 0.0f, "dialg3");
             addSprite(bkSprite);
@@ -50,9 +52,9 @@ public class CaptureDialogScene extends DialogScene {
             NormalSprite lvSprite = new NormalSprite(90, 95 - 5 + 5, "font_lv1", weapon.getLv() - 1);
             addSprite(lvSprite);
 
-            TextSprite textSprite1 = new TextSprite(140, 45, true, "正在占领城市", TexRegionManager.getInstance().getFont16());
+            TextSprite textSprite1 = new TextSprite(140, 45, true, "正在占领城市", getFont16());
             addSprite(textSprite1);
-            TextSprite textSprite2 = new TextSprite(140, 65, true, city.name, TexRegionManager.getInstance().getFont16());
+            TextSprite textSprite2 = new TextSprite(140, 65, true, city.name, getFont16());
             addSprite(textSprite2);
 
 

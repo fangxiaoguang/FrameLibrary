@@ -8,6 +8,8 @@ import com.game.frame.texture.TexRegionManager;
 
 import java.util.List;
 
+import static com.game.frame.texture.TexRegionManager.getFont16;
+
 /**
  * Created by fangxg on 2015/7/27.
  */
@@ -21,7 +23,7 @@ public class BottomMessageSprite extends BaseSprite {
 
         int count = 0;
         for (String text : pTexts) {
-            TextFlyweight textFlyweight = new TextFlyweight(28.0f, 10  + 12.0f  + 20 * count, true, text, TexRegionManager.getInstance().getFont16());
+            TextFlyweight textFlyweight = new TextFlyweight(28.0f, 10  + 12.0f  + 20 * count, true, text, getFont16());
             bkFlyweight.addChildFlyweight(textFlyweight);
             count++;
         }

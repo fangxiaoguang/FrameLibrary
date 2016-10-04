@@ -18,6 +18,8 @@ import org.andengine.entity.modifier.SequenceEntityModifier;
 
 import java.util.List;
 
+import static com.game.frame.texture.TexRegionManager.getFont12;
+
 /**
  * Created by fangxg on 2015/7/22.
  */
@@ -143,7 +145,7 @@ public class BattlefieldWeaponSprite extends BaseSprite {
 		}
 		*/
         if(GameSetup.isDebug_Weapon_id == true){
-            TextFlyweight idFlyweight = new TextFlyweight(30.0f, 0.0f, true, "=" + pWeapon.id, TexRegionManager.getInstance().getFont12());
+            TextFlyweight idFlyweight = new TextFlyweight(30.0f, 0.0f, true, "=" + pWeapon.id, getFont12());
             bkFlyweight.addChildFlyweight(idFlyweight);
         }
 
